@@ -1,40 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp124
+using Course;
+using System;
+using System.Globalization;
+namespace ProjetoEstoque
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Produto P = new Produto();
-         
-
-            Console.WriteLine("Entre com dados do produto: ");
-            Console.WriteLine("Nome do produto: ");
-            P.Nome = Console.ReadLine();
-            Console.WriteLine("Valor do produto: ");
-            P.Preco = double.Parse(Console.ReadLine());
-            Console.WriteLine("Quantidade atual no estoque: ");
-            P.Quantidade = int.Parse(Console.ReadLine());
            
+            Console.WriteLine("Entre os dados do produto:");
+            Console.Write("Nome: ");
+            string nome = Console.ReadLine();
+            Console.Write("Preço: ");
+            double preco = double.Parse(Console.ReadLine()); 
+            Console.Write("Quantidade no estoque: ");
+            int quantidade = int.Parse(Console.ReadLine());
+            
+            Produto p = new Produto(nome,preco,quantidade);
 
-            Console.WriteLine("Dados do produto: " + P);
+            Console.WriteLine("Dados do produto: " + p);
             Console.WriteLine();
-
-            Console.WriteLine("Digite numero de produtos a ser adicionado ao estoque: ");
-            int qtd = int.Parse(Console.ReadLine());
-            P.AdicionarProduto(qtd);
-            Console.WriteLine("Dados atualizados: " + P);
-
+            Console.Write("Digite o número de produtos a ser adicionado ao estoque: ");
+            int qte = int.Parse(Console.ReadLine());
+            p.AdicionarProdutos(qte);
             Console.WriteLine();
-            Console.WriteLine("Digite numero de produtos a ser removidos ao estoque: ");
-            int rmv = int.Parse(Console.ReadLine());
-            P.RemoverProduto(rmv);
-            Console.WriteLine("Dados atualizados: " + P);
+            Console.WriteLine("Dados atualizados: " + p);
+            Console.WriteLine();
+            Console.Write("Digite o número de produtos a ser removido do estoque: ");
+            qte = int.Parse(Console.ReadLine());
+            p.RemoverProdutos(qte);
+            Console.WriteLine();
+            Console.WriteLine("Dados atualizados: " + p);
             Console.ReadLine();
         }
     }
