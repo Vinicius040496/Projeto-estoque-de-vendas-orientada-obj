@@ -1,36 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp124
+using System.Globalization;
+namespace Course
 {
-    internal class Produto
+    class Produto
     {
         public string Nome;
         public double Preco;
         public int Quantidade;
 
-        public double EstoqueAtual()
+        public Produto(string nome, double preco, int quantidade)
         {
+            Nome = nome;
+            Preco = preco;
+            Quantidade = quantidade;
+        }
 
+        public double ValorTotalEmEstoque()
+        {
             return Preco * Quantidade;
-
         }
-
-        public void AdicionarProduto(int quantidade)
+        public void AdicionarProdutos(int quantidade)
         {
-            Quantidade = Quantidade + quantidade;
+            Quantidade += quantidade;
         }
-
-        public void RemoverProduto(int remover)
+        public void RemoverProdutos(int quantidade)
         {
-            Quantidade = Quantidade - remover;
+            Quantidade -= quantidade;
         }
         public override string ToString()
         {
-            return Nome + " R$ " + Preco.ToString("f2") + " , " + Quantidade + " Unidades, Total: R$ " + EstoqueAtual().ToString("f2");
+            return Nome
+            + ", $ "
+            + Preco.ToString("F2")
+            + ", "
+            + Quantidade
+            + " unidades, Total: $ "
+            + ValorTotalEmEstoque().ToString("F2");
         }
     }
 }
